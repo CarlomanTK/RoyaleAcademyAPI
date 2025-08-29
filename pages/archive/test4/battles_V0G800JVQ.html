@@ -1,0 +1,168 @@
+
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Statistiques - battles_V0G800JVQ</title>
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.13.4/css/jquery.dataTables.min.css">
+    <link rel="stylesheet" href="https://cdn.datatables.net/searchpanes/2.1.2/css/searchPanes.dataTables.min.css">
+    <link rel="stylesheet" href="https://cdn.datatables.net/select/1.6.2/css/select.dataTables.min.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.datatables.net/1.13.4/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/searchpanes/2.1.2/js/dataTables.searchPanes.min.js"></script>
+    <script src="https://cdn.datatables.net/select/1.6.2/js/dataTables.select.min.js"></script>
+</head>
+<body>
+    <h1>Statistiques - battles_V0G800JVQ</h1>
+
+    <h2>Résumé</h2>
+    <table class="dataframe display compact cell-border">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Parties</th>
+      <th>Victoires</th>
+      <th>Taux de victoire</th>
+      <th>Défaites</th>
+      <th>Nuls</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>Aujourd'hui</th>
+      <td>1</td>
+      <td>1</td>
+      <td>100.0%</td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>Mois en cours</th>
+      <td>2</td>
+      <td>1</td>
+      <td>50.0%</td>
+      <td>1</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>Mois dernier</th>
+      <td>0</td>
+      <td>0</td>
+      <td>0%</td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>Année en cours</th>
+      <td>2</td>
+      <td>1</td>
+      <td>50.0%</td>
+      <td>1</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>Total</th>
+      <td>2</td>
+      <td>1</td>
+      <td>50.0%</td>
+      <td>1</td>
+      <td>0</td>
+    </tr>
+  </tbody>
+</table>
+
+    <h2>Détails des matchs</h2>
+    <div style="margin-bottom: 1em;">
+      <label for="min">Du :</label>
+      <input type="date" id="min" name="min">
+      <label for="max">Au :</label>
+      <input type="date" id="max" name="max">
+    </div>
+
+    <table class="dataframe display compact cell-border" id="matchTable">
+  <thead>
+    <tr style="text-align: right;">
+      <th>battleTime</th>
+      <th>arena</th>
+      <th>mode</th>
+      <th>player_trophies</th>
+      <th>trophy_change</th>
+      <th>player_crowns</th>
+      <th>opponent_name</th>
+      <th>opponent_trophies</th>
+      <th>opponent_crowns</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>2025-08-29 12:30:35</td>
+      <td>Spell Valley</td>
+      <td>Ladder</td>
+      <td>1007</td>
+      <td>29</td>
+      <td>3</td>
+      <td>BAGIETA113</td>
+      <td>1005</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <td>2025-08-27 12:09:20</td>
+      <td>Spell Valley</td>
+      <td>Ladder</td>
+      <td>1034</td>
+      <td>-27</td>
+      <td>0</td>
+      <td>Angel</td>
+      <td>1060</td>
+      <td>1</td>
+    </tr>
+  </tbody>
+</table>
+
+<script>
+// --- Filtre personnalisé pour les dates ---
+$.fn.dataTable.ext.search.push(
+    function(settings, data, dataIndex) {
+        var min = $('#min').val();
+        var max = $('#max').val();
+        var date = data[0]; // battleTime en première colonne
+
+        if (!date) return true;
+
+        var d = new Date(date);
+
+        if ((min === "" && max === "") ||
+            (min === "" && d <= new Date(max)) ||
+            (new Date(min) <= d && max === "") ||
+            (new Date(min) <= d && d <= new Date(max))) {
+            return true;
+        }
+        return false;
+    }
+);
+
+$(document).ready(function(){
+    var table = $('#matchTable').DataTable({
+        "pageLength": 25,
+        "order": [[0, "desc"]],
+        "language": {
+            "url": "//cdn.datatables.net/plug-ins/1.13.4/i18n/fr-FR.json"
+        },
+        dom: 'Plfrtip',
+        searchPanes: {
+            cascadePanes: true,
+            viewTotal: true
+        },
+        columnDefs: [
+            { searchPanes: { show: true }, targets: [1, 2, 5, 8] }, // arène, mode, player_crowns, opponent_crowns
+            { searchPanes: { show: false }, targets: '_all' }
+        ]
+    });
+
+    $('#min, #max').on('change', function() {
+        table.draw();
+    });
+});
+</script>
+</body>
+</html>

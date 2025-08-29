@@ -1,0 +1,149 @@
+
+    <!DOCTYPE html>
+    <html lang="fr">
+    <head>
+      <meta charset="UTF-8">
+      <title>Clash Royale - battles_V0G800JVQ</title>
+      <link rel="stylesheet" href="https://cdn.datatables.net/1.13.4/css/jquery.dataTables.min.css">
+      <link rel="stylesheet" href="https://cdn.datatables.net/searchpanes/2.1.2/css/searchPanes.dataTables.min.css">
+      <link rel="stylesheet" href="https://cdn.datatables.net/select/1.7.0/css/select.dataTables.min.css">
+      <style>
+        body { margin: 20px; font-family: Arial, sans-serif; }
+        h1, h2 { margin-top: 30px; }
+        table.stats-table {
+            border-collapse: collapse;
+            margin-bottom: 30px;
+        }
+        table.stats-table th, table.stats-table td {
+            border: 1px solid #ccc;
+            padding: 8px 12px;
+            text-align: center;
+        }
+        table.stats-table thead th {
+            background-color: #f2f2f2;
+        }
+      </style>
+      <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+      <script src="https://cdn.datatables.net/1.13.4/js/jquery.dataTables.min.js"></script>
+      <script src="https://cdn.datatables.net/select/1.7.0/js/dataTables.select.min.js"></script>
+      <script src="https://cdn.datatables.net/searchpanes/2.1.2/js/dataTables.searchPanes.min.js"></script>
+    </head>
+    <body>
+      <h1>Historique des parties - battles_V0G800JVQ</h1>
+      <h2>Statistiques</h2>
+      <table class="dataframe stats-table">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Aujourd'hui</th>
+      <th>Mois en cours</th>
+      <th>Mois dernier</th>
+      <th>Année en cours</th>
+      <th>Total</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>Parties</th>
+      <td>1</td>
+      <td>2</td>
+      <td>0</td>
+      <td>2</td>
+      <td>2</td>
+    </tr>
+    <tr>
+      <th>Victoires</th>
+      <td>1</td>
+      <td>1</td>
+      <td>0</td>
+      <td>1</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>Taux de victoire</th>
+      <td>100.0%</td>
+      <td>50.0%</td>
+      <td>0.0%</td>
+      <td>50.0%</td>
+      <td>50.0%</td>
+    </tr>
+    <tr>
+      <th>Défaites</th>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>1</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>Nuls</th>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+  </tbody>
+</table>
+      <h2>Détails des matchs</h2>
+      <table border="1" class="dataframe display">
+  <thead>
+    <tr style="text-align: right;">
+      <th>battleTime</th>
+      <th>arena</th>
+      <th>mode</th>
+      <th>player_trophies</th>
+      <th>trophy_change</th>
+      <th>player_crowns</th>
+      <th>opponent_name</th>
+      <th>opponent_trophies</th>
+      <th>opponent_crowns</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>2025-08-29 12:30:35</td>
+      <td>Spell Valley</td>
+      <td>Ladder</td>
+      <td>1007</td>
+      <td>29</td>
+      <td>3</td>
+      <td>BAGIETA113</td>
+      <td>1005</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <td>2025-08-27 12:09:20</td>
+      <td>Spell Valley</td>
+      <td>Ladder</td>
+      <td>1034</td>
+      <td>-27</td>
+      <td>0</td>
+      <td>Angel</td>
+      <td>1060</td>
+      <td>1</td>
+    </tr>
+  </tbody>
+</table>
+      <script>
+        $(document).ready(function(){
+            $('table.display').DataTable({
+                "pageLength": 25,
+                "order": [[0, "desc"]],
+                "language": {
+                    "url": "//cdn.datatables.net/plug-ins/1.13.4/i18n/fr-FR.json"
+                },
+                dom: 'Plfrtip',
+                searchPanes: {
+                    cascadePanes: true,
+                    viewTotal: true
+                },
+                columnDefs: [
+                    { searchPanes: { show: true }, targets: '_all' }
+                ]
+            });
+        });
+      </script>
+    </body>
+    </html>
+    
