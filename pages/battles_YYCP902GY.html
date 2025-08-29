@@ -16,9 +16,18 @@ body { font-family: Arial; margin: 20px; }
 h1,h2,h3 { margin-top: 30px; }
 table.display td, table.display th { text-align: center; }
 .card-img { width: 40px; margin: 2px; vertical-align: middle; }
+.button {display: flex;align-items: center;justify-content: center;padding: 20px;
+          font-size: 18px;background-color: #4CAF50;color: white;border: none;
+          border-radius: 10px;cursor: pointer;text-decoration: none;
+          transition: background-color 0.3s, transform 0.2s;}
+.button:hover {background-color: #45a049;transform: translateY(-2px);}
+@media (max-width: 500px) {
+    .button {font-size: 16px;padding: 15px;}
+}
 </style>
 </head>
 <body>
+<a href="./../index.html" class="button">Accueil</a>
 <h1>Statistiques - battles_YYCP902GY</h1>
 
 <h2>Stats globales</h2>
